@@ -51,10 +51,3 @@ mvn clean javafx:run
 
 If using IntelliJ IDEA, Eclipse or NetBeans, import the folder as a Maven project and run `com.lab.hotel.App`.
 
-## Files To Show During Evaluation
-
-- `pom.xml` for Maven usage.
-- `src/main/resources/com/lab/hotel/login.fxml` and `dashboard.fxml` for Scene Builder/FXML usage.
-- `src/main/resources/com/lab/hotel/styles/app.css` for styling.
-- `src/main/java/com/lab/hotel/HotelStore.java` for permanent storage in files.
-- `data/rooms.csv` and `data/bookings.csv` for stored hotel data.
