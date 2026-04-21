@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Priority?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane fx:controller="com.lab.hotel.DashboardController"
+            xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml/1"
+            styleClass="dashboard-page">
+    <top>
+        <VBox spacing="16" styleClass="top-area">
+            <padding>
+                <Insets top="18" right="24" bottom="18" left="24"/>
+            </padding>
+            <HBox alignment="CENTER_LEFT" spacing="18">
+                <VBox spacing="3">
+                    <Label text="Avery Inn" styleClass="app-title-light"/>
+                    <Label text="Manage rooms, customers, booking and checkout." styleClass="top-caption"/>
+                </VBox>
+                <HBox HBox.hgrow="ALWAYS"/>
+                <Button onAction="#handleLogout" text="Logout" styleClass="secondary-button"/>
+            </HBox>
+        </VBox>
+    </top>
+
+    <center>
+        <TabPane fx:id="mainTabs" tabClosingPolicy="UNAVAILABLE" styleClass="main-tabs">
+            <padding>
+                <Insets top="20" right="20" bottom="20" left="20"/>
+            </padding>
+
+            <Tab fx:id="dashboardTab" text="Dashboard">
+                <VBox spacing="18" styleClass="content-panel">
+                    <padding>
+                        <Insets top="28" right="28" bottom="28" left="28"/>
+                    </padding>
+                    <Label text="Avery Inn" styleClass="hero-title"/>
+                    <Label text="Dashboard" styleClass="hero-subtitle"/>
+                    <Label text="Today's room snapshot for the front desk." styleClass="hero-caption"/>
+                    <HBox spacing="18">
+                        <VBox styleClass="stat-card" HBox.hgrow="ALWAYS">
+                            <Label text="Total Rooms" styleClass="stat-label"/>
+                            <Label fx:id="totalRoomsLabel" text="0" styleClass="stat-value"/>
+                        </VBox>
+                        <VBox styleClass="stat-card" HBox.hgrow="ALWAYS">
+                            <Label text="Available Rooms" styleClass="stat-label"/>
+                            <Label fx:id="dashboardAvailableLabel" text="0" styleClass="stat-value"/>
+                        </VBox>
+                        <VBox styleClass="stat-card" HBox.hgrow="ALWAYS">
+                            <Label text="Booked Rooms" styleClass="stat-label"/>
+                            <Label fx:id="bookedRoomsLabel" text="0" styleClass="stat-value"/>
+                        </VBox>
+                    </HBox>
+                    <TextArea editable="false" wrapText="true" VBox.vgrow="ALWAYS" text="Use Check In for new guests, Check Out for billing, and Revenue and Analytics for room-type performance."/>
+                </VBox>
+            </Tab>
+
+            <Tab fx:id="addRoomTab" text="Add Room">
+                <ScrollPane fitToWidth="true" styleClass="tab-surface" style="-fx-background-color: transparent; -fx-background: transparent;">
+                    <BorderPane>
+                        <left>
+                        <VBox prefWidth="310" spacing="14" styleClass="form-panel">
+                            <padding>
+                                <Insets top="22" right="22" bottom="22" left="22"/>
+                            </padding>
+                            <Label text="Add New Room" styleClass="section-title"/>
+                            <TextField fx:id="roomNumberField" promptText="Room Number"/>
+                            <ComboBox fx:id="roomTypeComboBox" maxWidth="Infinity" onAction="#handleRoomTypeChanged" promptText="Room Type"/>
+                            <TextField fx:id="pricePerDayField" editable="false" promptText="Price per Day"/>
+                            <ComboBox fx:id="statusComboBox" maxWidth="Infinity" promptText="Availability Status"/>
+                            <Button maxWidth="Infinity" onAction="#handleAddRoom" text="Add Room" styleClass="primary-button"/>
+                            <Button maxWidth="Infinity" onAction="#handleDeleteRoom" text="Delete Selected Room" styleClass="danger-button"/>
+                            <Label text="Room List" styleClass="section-title"/>
+                            <Button maxWidth="Infinity" onAction="#showAllRooms" text="View All Rooms" styleClass="secondary-button"/>
+                            <Button maxWidth="Infinity" onAction="#showAvailableRoomsOnly" text="Show Available Rooms Only" styleClass="secondary-button"/>
+                        </VBox>
+                    </left>
+                    <center>
+                        <VBox spacing="14" styleClass="content-panel">
+                            <padding>
+                                <Insets top="22" right="22" bottom="22" left="22"/>
+                            </padding>
+                            <HBox spacing="14">
+                                <VBox styleClass="stat-card">
+                                    <Label text="Available Rooms" styleClass="stat-label"/>
+                                    <Label fx:id="availableCountLabel" text="0" styleClass="stat-value"/>
+                                </VBox>
+                                <VBox styleClass="stat-card">
+                                    <Label text="Occupied Rooms" styleClass="stat-label"/>
+                                    <Label fx:id="occupiedCountLabel" text="0" styleClass="stat-value"/>
+                                </VBox>
+                            </HBox>
+                            <Label text="Room Details" styleClass="section-title"/>
+                            <TableView fx:id="roomTable" VBox.vgrow="ALWAYS" prefHeight="400">
+                                <columns>
+                                    <TableColumn fx:id="roomNumberColumn" prefWidth="150" text="Room Number"/>
+                                    <TableColumn fx:id="roomTypeColumn" prefWidth="160" text="Room Type"/>
+                                    <TableColumn fx:id="priceColumn" prefWidth="160" text="Price per Day"/>
+                                    <TableColumn fx:id="availabilityColumn" prefWidth="180" text="Availability Status"/>
+                                </columns>
+                                <columnResizePolicy>
+                                    <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+                                </columnResizePolicy>
+                            </TableView>
+                        </VBox>
+                    </center>
+                </BorderPane>
+                </ScrollPane>
+            </Tab>
+
+            <Tab fx:id="checkInTab" text="Check In">
+                <ScrollPane fitToWidth="true" styleClass="tab-surface" style="-fx-background-color: transparent; -fx-background: transparent;">
+                    <BorderPane>
+                        <left>
+                        <VBox prefWidth="330" spacing="14" styleClass="form-panel">
+                            <padding>
+                                <Insets top="22" right="22" bottom="22" left="22"/>
+                            </padding>
+                            <Label text="Customer Information" styleClass="section-title"/>
+                            <TextField fx:id="customerNameField" onKeyReleased="#handleBookingChanged" promptText="Customer Name"/>
+                            <VBox spacing="4">
+                                <TextField fx:id="contactNumberField" onKeyReleased="#handleBookingChanged" promptText="Contact Number"/>
+                                <Label fx:id="contactErrorLabel" styleClass="error-text" wrapText="true"/>
+                            </VBox>
+                            <ComboBox fx:id="checkInRoomComboBox" maxWidth="Infinity" onAction="#handleBookingChanged" promptText="Selected Room Number"/>
+                            <Label text="Check-In Date"/>
+                            <DatePicker fx:id="checkInDatePicker" maxWidth="Infinity" onAction="#handleBookingChanged" promptText="Select Date"/>
+                            <Label text="Days"/>
+                            <Spinner fx:id="nightsSpinner" editable="true" maxWidth="Infinity"/>
+                            <Button maxWidth="Infinity" onAction="#handleBookingChanged" text="Preview Booking" styleClass="secondary-button"/>
+                            <Button maxWidth="Infinity" onAction="#handleBookRoom" text="Book Room" styleClass="primary-button"/>
+                        </VBox>
+                    </left>
+                    <center>
+                        <VBox spacing="14" styleClass="content-panel">
+                            <padding>
+                                <Insets top="22" right="22" bottom="22" left="22"/>
+                            </padding>
+                            <Label text="Customer Booking Details" styleClass="section-title"/>
+                            <TextArea fx:id="bookingDetailsArea" editable="false" wrapText="true" VBox.vgrow="ALWAYS"/>
+                        </VBox>
+                    </center>
+                </BorderPane>
+                </ScrollPane>
+            </Tab>
+
+            <Tab fx:id="checkOutTab" text="Check Out">
+                <BorderPane styleClass="tab-surface">
+                    <center>
+                        <VBox spacing="14" styleClass="content-panel">
+                            <padding>
+                                <Insets top="22" right="22" bottom="22" left="22"/>
+                            </padding>
+                            <Label text="Active Customer Bookings" styleClass="section-title"/>
+                            <TableView fx:id="checkoutTable" onMouseClicked="#handleCheckoutSelection" VBox.vgrow="ALWAYS">
+                                <columns>
+                                    <TableColumn fx:id="bookingIdColumn" prefWidth="160" text="Booking ID"/>
+                                    <TableColumn fx:id="customerColumn" prefWidth="180" text="Customer Name"/>
+                                    <TableColumn fx:id="contactColumn" prefWidth="150" text="Contact Number"/>
+                                    <TableColumn fx:id="bookedRoomColumn" prefWidth="130" text="Room Number"/>
+                                    <TableColumn fx:id="bookingStatusColumn" prefWidth="130" text="Status"/>
+                                </columns>
+                                <columnResizePolicy>
+                                    <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+                                </columnResizePolicy>
+                            </TableView>
+                        </VBox>
+                    </center>
+                    <right>
+                        <VBox prefWidth="340" spacing="14" styleClass="form-panel">
+                            <padding>
+                                <Insets top="22" right="22" bottom="22" left="22"/>
+                            </padding>
+                            <Label text="Checkout" styleClass="section-title"/>
+                            <TextArea fx:id="checkoutDetailsArea" editable="false" wrapText="true" VBox.vgrow="ALWAYS"/>
+                            <Button maxWidth="Infinity" onAction="#handleShowCheckoutBill" text="Export Bill to File" styleClass="secondary-button"/>
+                            <Button maxWidth="Infinity" onAction="#handleCheckout" text="Checkout" styleClass="primary-button"/>
+                        </VBox>
+                    </right>
+                </BorderPane>
+            </Tab>
+
+            <Tab fx:id="customerDatabaseTab" text="Customer Database">
+                <BorderPane styleClass="tab-surface">
+                    <center>
+                        <VBox spacing="14" styleClass="content-panel">
+                            <padding>
+                                <Insets top="22" right="22" bottom="22" left="22"/>
+                            </padding>
+                            <Label text="Customer Database" styleClass="section-title"/>
+                            <TableView fx:id="customerDatabaseTable" onMouseClicked="#handleCustomerDatabaseSelection" VBox.vgrow="ALWAYS">
+                                <columns>
+                                    <TableColumn fx:id="databaseCustomerColumn" prefWidth="180" text="Customer Name"/>
+                                    <TableColumn fx:id="databaseContactColumn" prefWidth="150" text="Contact Number"/>
+                                    <TableColumn fx:id="databaseRoomColumn" prefWidth="130" text="Room Number"/>
+                                    <TableColumn fx:id="databaseRoomTypeColumn" prefWidth="130" text="Room Type"/>
+                                    <TableColumn fx:id="databaseAmountColumn" prefWidth="140" text="Total Amount"/>
+                                    <TableColumn fx:id="databaseStatusColumn" prefWidth="130" text="Status"/>
+                                </columns>
+                                <columnResizePolicy>
+                                    <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+                                </columnResizePolicy>
+                            </TableView>
+                        </VBox>
+                    </center>
+                    <right>
+                        <VBox prefWidth="340" spacing="14" styleClass="form-panel">
+                            <padding>
+                                <Insets top="22" right="22" bottom="22" left="22"/>
+                            </padding>
+                            <Label text="Customer Details" styleClass="section-title"/>
+                            <TextArea fx:id="customerDatabaseDetailsArea" editable="false" wrapText="true" VBox.vgrow="ALWAYS"/>
+                        </VBox>
+                    </right>
+                </BorderPane>
+            </Tab>
+
+            <Tab fx:id="analyticsTab" text="Revenue and Analytics">
+                <VBox spacing="18" styleClass="content-panel">
+                    <padding>
+                        <Insets top="28" right="28" bottom="28" left="28"/>
+                    </padding>
+                    <Label text="Revenue and Analytics" styleClass="hero-title"/>
+                    <Label text="Revenue and booking patterns by room type." styleClass="hero-caption"/>
+                    <HBox spacing="18" VBox.vgrow="ALWAYS">
+                        <VBox spacing="10" HBox.hgrow="ALWAYS" styleClass="chart-card">
+                            <Label text="Revenue by Room Type" styleClass="section-title"/>
+                            <BarChart fx:id="revenueChart" animated="false" legendVisible="false" HBox.hgrow="ALWAYS" VBox.vgrow="ALWAYS">
+                                <xAxis>
+                                    <CategoryAxis label="Room Type"/>
+                                </xAxis>
+                                <yAxis>
+                                    <NumberAxis label="Revenue"/>
+                                </yAxis>
+                            </BarChart>
+                        </VBox>
+                        <VBox spacing="10" HBox.hgrow="ALWAYS" styleClass="chart-card">
+                            <Label text="Bookings by Room Type" styleClass="section-title"/>
+                            <BarChart fx:id="bookingsChart" animated="false" legendVisible="false" HBox.hgrow="ALWAYS" VBox.vgrow="ALWAYS">
+                                <xAxis>
+                                    <CategoryAxis label="Room Type"/>
+                                </xAxis>
+                                <yAxis>
+                                    <NumberAxis label="Bookings"/>
+                                </yAxis>
+                            </BarChart>
+                        </VBox>
+                    </HBox>
+                </VBox>
+            </Tab>
+
+            <Tab fx:id="amenitiesTab" text="Amenities">
+                <ScrollPane fitToWidth="true" styleClass="tab-surface" style="-fx-background-color: transparent; -fx-background: transparent;">
+                    <VBox spacing="24" styleClass="content-panel" alignment="TOP_CENTER">
+                        <padding>
+                            <Insets top="38" right="38" bottom="38" left="38"/>
+                        </padding>
+                        <VBox spacing="6" alignment="CENTER">
+                            <Label text="Avery Inn Amenities" styleClass="hero-title"/>
+                            <Label text="Curated luxury experiences for our distinguished guests." styleClass="hero-caption"/>
+                        </VBox>
+
+                        <HBox spacing="24" alignment="CENTER">
+                            <VBox spacing="12" styleClass="stat-card" prefWidth="240" alignment="CENTER">
+                                <Label text="Spa &amp; Wellness" styleClass="section-title"/>
+                                <Label text="Luxury treatments and holistic massages available daily." styleClass="hero-caption" wrapText="true" textAlignment="CENTER"/>
+                            </VBox>
+                            <VBox spacing="12" styleClass="stat-card" prefWidth="240" alignment="CENTER">
+                                <Label text="Gourmet Dining" styleClass="section-title"/>
+                                <Label text="Michelin-star rated restaurant open for breakfast and dinner." styleClass="hero-caption" wrapText="true" textAlignment="CENTER"/>
+                            </VBox>
+                            <VBox spacing="12" styleClass="stat-card" prefWidth="240" alignment="CENTER">
+                                <Label text="Heated Pools" styleClass="section-title"/>
+                                <Label text="Indoor and outdoor temperature-controlled infinity pools." styleClass="hero-caption" wrapText="true" textAlignment="CENTER"/>
+                            </VBox>
+                        </HBox>
+
+                        <HBox spacing="24" alignment="CENTER">
+                            <VBox spacing="12" styleClass="stat-card" prefWidth="240" alignment="CENTER">
+                                <Label text="Fitness Center" styleClass="section-title"/>
+                                <Label text="24/7 fully equipped luxury gym with personal trainers." styleClass="hero-caption" wrapText="true" textAlignment="CENTER"/>
+                            </VBox>
+                            <VBox spacing="12" styleClass="stat-card" prefWidth="240" alignment="CENTER">
+                                <Label text="Valet Parking" styleClass="section-title"/>
+                                <Label text="Complimentary valet service and EV charging stations." styleClass="hero-caption" wrapText="true" textAlignment="CENTER"/>
+                            </VBox>
+                            <VBox spacing="12" styleClass="stat-card" prefWidth="240" alignment="CENTER">
+                                <Label text="Concierge" styleClass="section-title"/>
+                                <Label text="Dedicated planning for city tours, boutique tickets, and VIP bookings." styleClass="hero-caption" wrapText="true" textAlignment="CENTER"/>
+                            </VBox>
+                        </HBox>
+                        
+                        <VBox spacing="8" alignment="CENTER" style="-fx-padding: 30 0 0 0;">
+                            <Label text="For special requests, bookings, or further inquiries, please reach out to our team." styleClass="hero-caption"/>
+                            <HBox spacing="36" alignment="CENTER">
+                                <Label text="📧 concierge@averyinn.com" styleClass="section-title" style="-fx-font-size: 14px; -fx-text-fill: #A98C94;"/>
+                                <Label text="📞 +91 1800 555 1234" styleClass="section-title" style="-fx-font-size: 14px; -fx-text-fill: #A98C94;"/>
+                            </HBox>
+                        </VBox>
+                    </VBox>
+                </ScrollPane>
+            </Tab>
+        </TabPane>
+    </center>
+
+    <bottom>
+        <HBox alignment="CENTER_LEFT" styleClass="status-bar">
+            <padding>
+                <Insets top="12" right="24" bottom="12" left="24"/>
+            </padding>
+            <Label fx:id="statusLabel" text="Ready."/>
+        </HBox>
+    </bottom>
+</BorderPane>

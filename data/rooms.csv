@@ -1,0 +1,17 @@
+roomNumber,roomType,pricePerDay,status
+002,Single,3000.0,Available
+003,Single,3000.0,Available
+004,Single,3000.0,Available
+101,Single,3000.0,Available
+102,Single,3000.0,Available
+103,Double,5000.0,Available
+104,Double,5000.0,Available
+201,Double,5000.0,Available
+202,Double,5000.0,Available
+203,Double,5000.0,Available
+204,Double,5000.0,Available
+301,Deluxe,10000.0,Available
+303,Deluxe,10000.0,Available
+304,Deluxe,10000.0,Available
+501,Deluxe,10000.0,Available
+502,Double,5000.0,Available

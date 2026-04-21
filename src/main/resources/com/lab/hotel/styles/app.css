@@ -1,0 +1,431 @@
+/* Professional, Complex & Layered Aesthetics for JavaFX */
+.root {
+    -fx-font-family: "Segoe UI", "Roboto", "Helvetica Neue", sans-serif;
+    -fx-font-size: 14px;
+    -fx-text-fill: #4E342E; /* Deep professional taupe-brown */
+    -fx-base: #FFFFFF;
+    -fx-background: #FFFFFF; /* Keep base white for text areas and inner controls */
+    -fx-control-inner-background: #FFFFFF;
+    -fx-accent: #A98C94; /* Professional dusty mauve */
+    -fx-focus-color: #D6C2C9;
+    -fx-faint-focus-color: transparent;
+}
+
+/* Page Backgrounds */
+.login-page {
+    /* Beautiful gradient over a rich woody brown */
+    -fx-background-color: radial-gradient(center 50% 50%, radius 80%, #614444, #483131);
+}
+
+.dashboard-page {
+    -fx-background-color: #483131; /* Nice woody brown to make panels pop */
+}
+
+/* Premium Typography Overrides */
+.hero-title, .hero-subtitle, .app-title-centered, .app-title-light, .section-title, .login-section-title {
+    -fx-font-family: "Georgia", "Playfair Display", "Times New Roman", serif;
+}
+
+/* Premium Layered Panels with Bolder Outlines */
+.login-card,
+.form-panel,
+.content-panel,
+.chart-card {
+    -fx-background-color: #FFFFFF; 
+    -fx-border-color: #C8B2B7; /* Stronger mauve-beige border */
+    -fx-border-width: 2px; /* Thicker for a structured, less simple look */
+    -fx-border-radius: 12px;
+    -fx-background-radius: 12px;
+    -fx-effect: dropshadow(gaussian, rgba(78, 52, 46, 0.15), 25, 0, 0, 8); /* Deep, soft 3D shadow */
+}
+
+.form-panel:hover, .content-panel:hover {
+    -fx-border-color: #A98C94; /* Darker outline on hover */
+    -fx-effect: dropshadow(gaussian, rgba(78, 52, 46, 0.22), 30, 0, 0, 10); /* Pop out more */
+}
+
+.chart-card {
+    -fx-background-color: #E3D3C8; /* Medium toned soft beige */
+}
+
+.chart-card:hover {
+    -fx-background-color: #EADCD6; /* Slightly lighter beige on hover */
+    -fx-border-color: #A98C94;
+    -fx-effect: dropshadow(gaussian, rgba(78, 52, 46, 0.22), 30, 0, 0, 10);
+}
+
+.login-card {
+    -fx-background-color: rgba(255, 255, 255, 0.98);
+    -fx-border-color: #C8B2B7;
+    -fx-effect: dropshadow(gaussian, rgba(78, 52, 46, 0.25), 35, 0, 0, 12);
+}
+
+/* Brand & Typography */
+.brand-block {
+    -fx-padding: 0 0 16 0;
+}
+
+.logo-mark {
+    -fx-min-width: 150px;
+    -fx-min-height: 150px;
+    -fx-alignment: center;
+}
+
+.app-title-centered {
+    -fx-font-size: 34px;
+    -fx-font-weight: 800;
+    -fx-text-fill: #3E2723; /* Deep Espresso Brown */
+    -fx-alignment: center;
+    -fx-text-alignment: center;
+}
+
+.brand-caption {
+    -fx-font-size: 14px;
+    -fx-font-weight: 600;
+    -fx-text-fill: #8D6E63; /* Light Brown */
+}
+
+.app-title-light {
+    -fx-font-size: 24px;
+    -fx-font-weight: 800;
+    -fx-text-fill: #FFF5EE; /* Bright seashell for contrast against wood brown */
+}
+
+.top-caption {
+    -fx-font-size: 13px;
+    -fx-text-fill: #EADCD6; /* Brightened for contrast */
+}
+
+/* Hero Section */
+.hero-title {
+    -fx-font-size: 36px;
+    -fx-font-weight: 800;
+    -fx-text-fill: #3E2723;
+}
+
+.hero-subtitle {
+    -fx-font-size: 22px;
+    -fx-font-weight: 700;
+    -fx-text-fill: #A98C94; /* Professional Mauve */
+}
+
+.hero-caption {
+    -fx-font-size: 15px;
+    -fx-text-fill: #8D6E63;
+}
+
+.section-title, .login-section-title {
+    -fx-font-size: 18px;
+    -fx-font-weight: 700;
+    -fx-text-fill: #4E342E;
+}
+
+/* Top Area & Status Bar */
+.top-area {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent transparent #C8B2B7 transparent;
+    -fx-border-width: 2px;
+}
+
+.status-bar {
+    -fx-background-color: transparent;
+    -fx-border-color: #C8B2B7 transparent transparent transparent;
+    -fx-border-width: 2px;
+    -fx-text-fill: #EADCD6; /* Brightened for contrast */
+    -fx-font-size: 12px;
+}
+
+/* Thicker Tabs */
+.tab-surface {
+    -fx-background-color: transparent;
+}
+
+.main-tabs .tab-header-area .tab-header-background {
+    -fx-background-color: transparent;
+}
+
+.main-tabs .tab {
+    -fx-background-color: #F8F1EE;
+    -fx-background-radius: 8px 8px 0 0;
+    -fx-padding: 10 24 10 24;
+    -fx-border-color: #BCAAA4 #BCAAA4 transparent #BCAAA4;
+    -fx-border-width: 2px 2px 0 2px;
+    -fx-border-radius: 8px 8px 0 0;
+}
+
+.main-tabs .tab:hover {
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: #A98C94 #A98C94 transparent #A98C94;
+}
+
+.main-tabs .tab:selected {
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: #8C6D77 #C8B2B7 transparent #C8B2B7;
+    -fx-border-width: 4px 2px 0 2px; /* Big thick highlight atop the selected tab */
+}
+
+.main-tabs .tab-label {
+    -fx-text-fill: #8D6E63;
+    -fx-font-size: 14px;
+    -fx-font-weight: 600;
+}
+
+.main-tabs .tab:hover .tab-label {
+    -fx-text-fill: #A98C94;
+}
+
+.main-tabs .tab:selected .tab-label {
+    -fx-text-fill: #4E342E;
+    -fx-font-weight: 800;
+}
+
+/* Buttons */
+.button {
+    -fx-font-weight: 700;
+    -fx-background-radius: 8px;
+    -fx-border-radius: 8px;
+    -fx-padding: 10 18 10 18;
+    -fx-cursor: hand;
+    -fx-font-size: 14px;
+    -fx-border-width: 1.5px;
+}
+
+.primary-button {
+    -fx-background-color: linear-gradient(to right, #B29B95, #A98C94);
+    -fx-text-fill: #FFFFFF;
+    -fx-border-color: #937A83;
+    -fx-effect: dropshadow(gaussian, rgba(169, 140, 148, 0.4), 8, 0, 0, 3);
+}
+
+.primary-button:hover {
+    -fx-background-color: linear-gradient(to right, #9D8489, #8C6D77);
+    -fx-border-color: #755B66;
+}
+
+.primary-button:pressed {
+    -fx-background-color: #755B66;
+}
+
+.secondary-button {
+    -fx-background-color: #FFFFFF;
+    -fx-text-fill: #4E342E;
+    -fx-border-color: #C8B2B7;
+}
+
+.secondary-button:hover {
+    -fx-background-color: #F8F1EE;
+    -fx-text-fill: #3E2723;
+    -fx-border-color: #A98C94;
+}
+
+.danger-button {
+    -fx-background-color: #FFF3F3;
+    -fx-text-fill: #D32F2F;
+    -fx-border-color: #E57373;
+}
+
+.danger-button:hover {
+    -fx-background-color: #FFEBEE;
+    -fx-border-color: #D32F2F;
+}
+
+/* Highlighted Stat Cards */
+.stat-card {
+    -fx-background-color: #F9F3F4; /* Soft dusty pinkish-ivory */
+    -fx-border-color: #C8B2B7; /* Mauve border */
+    -fx-border-width: 2px;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+    -fx-padding: 20;
+    -fx-min-width: 180px;
+    -fx-effect: dropshadow(gaussian, rgba(169, 140, 148, 0.25), 15, 0, 0, 5);
+}
+
+.stat-card:hover {
+    -fx-border-color: #A98C94; 
+    -fx-background-color: #FFFFFF;
+    -fx-effect: dropshadow(gaussian, rgba(169, 140, 148, 0.4), 20, 0, 0, 8); /* Pops out highly */
+}
+
+.stat-label {
+    -fx-text-fill: #A98C94;
+    -fx-font-weight: 700;
+    -fx-font-size: 13px;
+    -fx-text-transform: uppercase;
+}
+
+.stat-card:hover .stat-label {
+    -fx-text-fill: #8C6D77;
+}
+
+.stat-value {
+    -fx-font-size: 38px;
+    -fx-font-weight: 800;
+    -fx-text-fill: #4E342E;
+}
+
+/* Structured Inputs */
+.text-field,
+.password-field,
+.combo-box,
+.spinner,
+.text-area,
+.date-picker,
+.combo-box .list-view {
+    -fx-background-color: #FCF9F7;
+    -fx-border-color: #C8B2B7;
+    -fx-border-radius: 6px;
+    -fx-background-radius: 6px;
+    -fx-text-fill: #4E342E;
+    -fx-prompt-text-fill: #A1887F;
+    -fx-padding: 10;
+    -fx-font-size: 14px;
+    -fx-border-width: 1.5px; /* Thicker borders give structure */
+}
+
+.combo-box > .list-cell {
+    -fx-text-fill: #4E342E;
+}
+
+.text-field:hover,
+.password-field:hover,
+.combo-box:hover,
+.spinner:hover,
+.date-picker:hover,
+.text-area:hover {
+    -fx-border-color: #A98C94; 
+}
+
+.text-field:focused,
+.password-field:focused,
+.combo-box:focused,
+.spinner:focused,
+.date-picker:focused,
+.text-area:focused {
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: #8C6D77;
+    -fx-effect: dropshadow(gaussian, rgba(169, 140, 148, 0.25), 8, 0, 0, 0);
+}
+
+.text-area {
+    -fx-font-family: "Consolas", "Courier New", monospace; 
+    -fx-background-color: #E3D3C8; /* Medium toned soft beige shade */
+}
+
+.text-area:focused {
+    -fx-background-color: #EADCD6; /* Slightly lighter on focus */
+}
+
+.text-area .content {
+    -fx-background-color: transparent;
+}
+
+/* Thicker Tables */
+.table-view {
+    -fx-background-color: transparent;
+    -fx-border-color: #C8B2B7;
+    -fx-border-width: 2px;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+    -fx-padding: 1px;
+}
+
+.table-view .column-header-background {
+    -fx-background-color: #F8F1EE;
+    -fx-background-radius: 9px 9px 0 0;
+    -fx-border-color: transparent transparent #C8B2B7 transparent;
+    -fx-border-width: 2px;
+}
+
+.table-view .column-header,
+.table-view .filler {
+    -fx-background-color: transparent;
+    -fx-border-width: 0;
+}
+
+.table-view .column-header .label {
+    -fx-text-fill: #6D4C41;
+    -fx-font-weight: 700;
+    -fx-font-size: 12px;
+    -fx-padding: 12 0 12 16;
+}
+
+.table-row-cell {
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: transparent transparent #FCF9F7 transparent;
+    -fx-border-width: 1px;
+    -fx-cell-size: 46px; 
+}
+
+.table-row-cell:odd {
+    -fx-background-color: #FDF8F5;
+}
+
+.table-row-cell:hover {
+    -fx-background-color: #F9F3F4;
+}
+
+.table-row-cell:selected {
+    -fx-background-color: rgba(169, 140, 148, 0.2);
+    -fx-border-color: #A98C94; 
+    -fx-border-width: 1px;
+}
+
+.table-row-cell:selected .text {
+    -fx-fill: #3E2723;
+    -fx-font-weight: 600;
+}
+
+.table-view .cell {
+    -fx-alignment: center-left;
+    -fx-padding: 0 0 0 16;
+    -fx-text-fill: #4E342E;
+}
+
+/* Charts */
+.chart {
+    -fx-padding: 10px;
+}
+
+.chart-plot-background {
+    -fx-background-color: transparent;
+}
+
+.chart-vertical-grid-lines,
+.chart-horizontal-grid-lines {
+    -fx-stroke: #D6C2C9;
+    -fx-stroke-dash-array: 4 4;
+}
+
+.chart-bar {
+    -fx-bar-fill: linear-gradient(to top, #A98C94, #D6C2C9); 
+    -fx-background-radius: 4px 4px 0 0;
+    -fx-border-color: #8C6D77 transparent transparent transparent;
+    -fx-border-width: 2px 0 0 0;
+}
+
+.chart-bar:hover {
+    -fx-bar-fill: linear-gradient(to top, #8C6D77, #BCAAA4);
+}
+
+.axis {
+    -fx-tick-label-fill: #8D6E63;
+    -fx-tick-length: 4;
+    -fx-tick-mark-stroke: transparent;
+}
+
+.axis-label {
+    -fx-text-fill: #4E342E;
+}
+
+/* Typography Helpers */
+.error-text {
+    -fx-text-fill: #D32F2F;
+    -fx-font-size: 13px;
+    -fx-font-weight: 600;
+}
+
+.hint-text {
+    -fx-text-fill: #8D6E63;
+    -fx-font-size: 12px;
+}

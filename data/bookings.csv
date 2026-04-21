@@ -1,0 +1,2 @@
+bookingId,customerName,contactNumber,roomNumber,roomType,checkInDate,nights,totalAmount,status
+BK-1776101488281,vishnu,9008007783,501,Deluxe,2026-04-10,6,67200.0,Checked Out
